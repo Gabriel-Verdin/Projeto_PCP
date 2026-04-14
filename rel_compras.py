@@ -26,4 +26,4 @@ print("Arquivo selecionado: ", caminho_arquivo)
 print(colunas_desejadas.head())
 
 # Exporta o arquivo como csv
-rel_compras.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
+colunas_desejadas.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
