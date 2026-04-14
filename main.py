@@ -34,5 +34,18 @@ data_frame = data_frame[['Codigo', 'Descricao', 'Unid', 'Estoque']]
 for col in data_frame.select_dtypes(include=['object', 'string']).columns:
     data_frame[col] = data_frame[col].str.replace('="', '', regex=False).str.replace('"', '', regex=False).str.strip()
 
+# Remove linhas que não contém numeros no 'Estoque'
+data_frame = data_frame[data_frame['Estoque'].str.match(r'^[0-9.,]+$', na=False)]
+
+# Converte 'Estoque' para float
+data_frame['Estoque'] = (
+    data_frame['Estoque']
+    .str.replace('.', '', regex=False) # Remove separador de milhar
+    .str.replace(',', '.', regex=False) # Troca virgula por ponto
+    .astype(float)
+)
+
 print("Arquivo Selecionado: ", caminho_arquivo)
 print(data_frame.head())
+
+data_frame.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
