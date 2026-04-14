@@ -19,11 +19,19 @@ data_frame = pd.read_csv(caminho_arquivo, sep='\t', encoding='latin1', skiprows=
 # Remove linhas totalmente vazias
 data_frame = data_frame.dropna(axis=1, how='all')
 
-# Limpa aspas e sinais de "=" nos nomes das colunas
-data_frame.columns = data_frame.columns.str.replace('="', '', regex=False).str.replace('"', '', regex=False).str.strip()
+# Renomeia as colunas para os nomes corretos
+data_frame = data_frame.rename(columns={
+    data_frame.columns[0]: 'Codigo',
+    data_frame.columns[1]: 'Descricao',
+    data_frame.columns[2]: 'Unid',
+    data_frame.columns[3]: 'Estoque'
+})
+
+# Mantém só colunas principais
+data_frame = data_frame[['Codigo', 'Descricao', 'Unid', 'Estoque']]
 
 # Limpa valores de texto
-for col in df.select_dtypes(include=['object', 'string']).columns:
+for col in data_frame.select_dtypes(include=['object', 'string']).columns:
     data_frame[col] = data_frame[col].str.replace('="', '', regex=False).str.replace('"', '', regex=False).str.strip()
 
 print("Arquivo Selecionado: ", caminho_arquivo)
