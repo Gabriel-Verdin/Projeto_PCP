@@ -2,50 +2,50 @@ import pandas as pd
 import tkinter as tk 
 from tkinter import filedialog
 
-# data_frame = relatorio_estoque
-
 # Abre o explorador de arquivos
 root = tk.Tk()
 root.withdraw()
 
 caminho_arquivo = filedialog.askopenfilename(
-    title="Selecione o Arquivo Excel",
+    title="Selecione o Relatório de Estoque",
     filetypes=[("Arquivos Excel", "*.xlsx *.xls")]
 )
 
-# Lê o arquivo usando ';' como separador
-data_frame = pd.read_csv(caminho_arquivo, sep='\t', encoding='latin1', skiprows=3)
+# Lê o arquivo usando '\t' como separador
+rel_estoque = pd.read_csv(caminho_arquivo, sep='\t', encoding='latin1', skiprows=3)
 
 # Remove linhas totalmente vazias
-data_frame = data_frame.dropna(axis=1, how='all')
+rel_estoque = rel_estoque.dropna(axis=1, how='all')
 
 # Renomeia as colunas para os nomes corretos
-data_frame = data_frame.rename(columns={
-    data_frame.columns[0]: 'Codigo',
-    data_frame.columns[1]: 'Descricao',
-    data_frame.columns[2]: 'Unid',
-    data_frame.columns[3]: 'Estoque'
+rel_estoque = rel_estoque.rename(columns={
+    rel_estoque.columns[0]: 'Codigo',
+    rel_estoque.columns[1]: 'Descricao',
+    rel_estoque.columns[2]: 'Unid',
+    rel_estoque.columns[3]: 'Estoque'
 })
 
 # Mantém só colunas principais
-data_frame = data_frame[['Codigo', 'Descricao', 'Unid', 'Estoque']]
+rel_estoque = rel_estoque[['Codigo', 'Descricao', 'Unid', 'Estoque']]
 
 # Limpa valores de texto
-for col in data_frame.select_dtypes(include=['object', 'string']).columns:
-    data_frame[col] = data_frame[col].str.replace('="', '', regex=False).str.replace('"', '', regex=False).str.strip()
+for col in rel_estoque.select_dtypes(include=['object', 'string']).columns:
+    rel_estoque[col] = rel_estoque[col].str.replace('="', '', regex=False).str.replace('"', '', regex=False).str.strip()
 
 # Remove linhas que não contém numeros no 'Estoque'
-data_frame = data_frame[data_frame['Estoque'].str.match(r'^[0-9.,]+$', na=False)]
+rel_estoque = rel_estoque[rel_estoque['Estoque'].str.match(r'^[0-9.,]+$', na=False)]
 
 # Converte 'Estoque' para float
-data_frame['Estoque'] = (
-    data_frame['Estoque']
+rel_estoque['Estoque'] = (
+    rel_estoque['Estoque']
     .str.replace('.', '', regex=False) # Remove separador de milhar
     .str.replace(',', '.', regex=False) # Troca virgula por ponto
     .astype(float)
 )
 
+# Printa os primeiros dados dos arquivos
 print("Arquivo Selecionado: ", caminho_arquivo)
-print(data_frame.head())
+print(rel_estoque.head())
 
-data_frame.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
+# Exporta o arquivo como csv
+rel_estoque.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
