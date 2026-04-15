@@ -15,15 +15,15 @@ caminho_arquivo = filedialog.askopenfilename(
 rel_compras = pd.read_excel(caminho_arquivo, engine="xlrd")
 
 # Seleciona somente as colunas desejadas (F, L, M e S) e renomeia para algo mais explicativo
-colunas_desejadas = rel_compras.iloc[:, [5, 11, 12, 18]]
-colunas_desejadas.columns = ["Fornecedor", "Cod_Produto", "Desc_Produto", "Qtd_pedida"]
+rel_compras = rel_compras.iloc[:, [5, 11, 12, 18]]
+rel_compras.columns = ["Fornecedor", "Cod_Produto", "Desc_Produto", "Qtd_pedida"]
 
 # Remove linhas totalmente vazias
-colunas_desejadas = colunas_desejadas.dropna(how='all')
+rel_compras = rel_compras.dropna(how='all')
 
 # Printa as primeiras informações do arquivo 
 print("Arquivo selecionado: ", caminho_arquivo)
-print(colunas_desejadas.head())
+print(rel_compras.head())
 
 # Exporta o arquivo como csv
-colunas_desejadas.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
+rel_compras.to_csv('estoque_bruto.csv', index=False, encoding="utf-8")
