@@ -6,6 +6,22 @@ def db_relatorio_compras(conexao):
     relatorio_compras = importar_relatorio.importar_relatorio_generico()
     relatorio_compras.to_sql("relatorio_compras", conexao, if_exists="replace", index=False)
 
+def db_relatorio_estoque(conexao):
+    relatorio_estoque = importar_relatorio.importar_relatorio_generico()
+    relatorio_estoque.to_sql("relatorio_estoque", conexao, if_exists="replace", index=False)
+
+def db_relatorio_ns(conexao):
+    relatorio_ns = importar_relatorio.importar_relatorio_generico()
+    relatorio_ns.to_sql("relatorio_ns", conexao, if_exists="replace", index=False)
+
+def db_relatorio_hot(conexao):
+    relatorio_hot = importar_relatorio.importar_relatorio_generico()
+    relatorio_hot.to_sql("relatorio_hot", conexao, if_exists="replace", index=False)
+
+def db_relatorio_lucas(conexao):
+    relatorio_lucas = importar_relatorio.importar_relatorio_generico()
+    relatorio_lucas.to_sql("relatorio_lucas", conexao, if_exists="replace", index=False)
+
 # Conexão com o Banco de Dados
 conexao = sqlite3.connect('meu_banco.db')
 cursor = conexao.cursor()
