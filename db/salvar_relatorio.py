@@ -1,4 +1,4 @@
-import importar_relatorio
+import src.importar_relatorio as importar_relatorio
 import sqlite3
 
 # Fução de Importação do Relatório para o Banco de Dados

@@ -1,10 +1,10 @@
-# Ignorar banco de dados SQLite
-*.db
+# Banco de dados
+db/*.db
 
-# Ignorar cache do Python
+# Cache do Python
 __pycache__/
 *.pyc
 
-# Ignorar arquivos temporários do sistema
+# Arquivos temporários
 *.log
 *.tmp
