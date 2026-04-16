@@ -1,3 +1,7 @@
+# =====================================================
+# =============== Ainda não finalizado ================
+# =====================================================
+
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
@@ -15,7 +19,7 @@ data_frame = pd.read_csv(caminho_arquivo, sep='\t', encoding='latin1', engine='p
 # Remove linhas totalmente vazias
 data_frame = data_frame.dropna(how='all')
 
-data_frame.iloc[:, :4]
+data_frame = data_frame.iloc[:, :4]
 data_frame.columns = ['Nivel', 'Codigo', 'Descricao', 'Quantidade']
 
 print(data_frame)

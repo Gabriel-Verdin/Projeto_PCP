@@ -1,6 +1,3 @@
-# =====================================================
-# =============== Ainda não finalizado ================
-# =====================================================
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
