@@ -51,5 +51,5 @@ def importar_relatorio_generico():
 
     return data_frame
     
-relatorio = importar_relatorio_generico()
-print(relatorio)
+# relatorio = importar_relatorio_generico()
+# print(relatorio)
