@@ -30,9 +30,10 @@ cursor = conexao.cursor()
 db_relatorio_compras(conexao)
 
 # Consulta do Banco de Dados
-cursor.execute("SELECT * FROM relatorio_compras")
-for linha in cursor.fetchall():
-    print(linha)
+def consulta():
+    cursor.execute("SELECT * FROM relatorio_compras")
+    for linha in cursor.fetchall():
+        print(linha)
 
 # Fechamento da Conexão
 conexao.commit()
