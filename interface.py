@@ -1,5 +1,7 @@
 import streamlit as st
 import db.salvar_relatorio
 
-st.title("Relatorios do MRP")
-st.dataframe(db.salvar_relatorio.consulta())
+uploaded_file = st.file_uploader("Escolha o Relatório: ", type=["xls", "xlsx", "csv"])
+
+if uploaded_file is not None:
+    db.salvar_relatorio.consulta()
