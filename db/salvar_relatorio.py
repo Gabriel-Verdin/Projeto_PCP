@@ -1,5 +1,6 @@
 import src.importar_relatorio as importar_relatorio
 import sqlite3
+import pandas as pd
 
 # Fução de Importação do Relatório para o Banco de Dados
 def db_relatorio_compras(conexao):
@@ -27,13 +28,14 @@ conexao = sqlite3.connect('meu_banco.db')
 cursor = conexao.cursor()
 
 # Chamada da Função
-db_relatorio_compras(conexao)
+db_relatorio_ns(conexao)
 
 # Consulta do Banco de Dados
 def consulta():
-    cursor.execute("SELECT * FROM relatorio_compras")
-    for linha in cursor.fetchall():
-        print(linha)
+    conexao = sqlite3.connect('meu_banco.db')
+    data_frame = pd.read_sql_query("SELECT * FROM relatorio_ns", conexao)
+    conexao.close()
+    return data_frame
 
 # Fechamento da Conexão
 conexao.commit()
