@@ -1,20 +1,13 @@
 import pandas as pd
-import tkinter as tk
-from tkinter import filedialog
+# import tkinter as tk
+# from tkinter import filedialog
 
-def importar_relatorio_generico():
+def importar_relatorio_generico(uploaded_file):
 
-    # Abre o explorador de Arquivos para escolha do relatório em específico
-    # root = tk.Tk()
-    # root.withdraw()
+    if uploaded_file is None:
+        return None
 
-    # caminho_arquivo = filedialog.askopenfilename(
-    #     title="Selecione o Arquivo",
-    #     filetypes=[("Arquivos Excel", "*.xlsx *.xls")]
-    # )
-
-    # Lê o arquivo usando excel
-    # data_frame = pd.read_excel(caminho_arquivo, engine="xlrd")
+    data_frame = pd.read_excel(uploaded_file, engine="xlrd")
 
     try: # Caso for o Relatório de Compras
         # Seleciona somente as colunas desejadas (F, L, M e S) e renomeia para algo mais explicativo
@@ -50,6 +43,3 @@ def importar_relatorio_generico():
         data_frame = data_frame[data_frame['Estoque'].str.match(r'^[0-9.,]+$', na=False)]
 
     return data_frame
-    
-# relatorio = importar_relatorio_generico()
-# print(relatorio)
