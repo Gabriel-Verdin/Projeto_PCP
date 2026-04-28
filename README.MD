@@ -21,7 +21,3 @@
 Para executar a interface Streamlit:
 
    streamlit run interface.py
-
-Para rodar o módulo de salvamento de relatório diretamente:
-
-   python -m db.salvar_relatorio
