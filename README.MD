@@ -9,8 +9,13 @@
 
 2. Crie e ative um ambiente virtual (opcional, mas recomendado):
 
+   #### Windows
    python -m venv .venv
    .venv\Scripts\activate
+
+   #### Linux
+   python3 -m venv .venv
+   source .venv/bin/activate
 
 3. Instale as dependências:
 

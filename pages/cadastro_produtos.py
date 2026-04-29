@@ -44,7 +44,7 @@ if st.button("Cadastrar Produto"):
 if st.session_state.produtos:
     st.subheader("Resumo dos Cadastros")
     df = pd.DataFrame(st.session_state.produtos)
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df, width="stretch")
 
     if st.button("Salvar Cadastro"):
         cursor.execute(
