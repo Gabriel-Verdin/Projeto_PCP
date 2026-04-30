@@ -8,7 +8,7 @@ def db_relatorio_compras(uploaded_file):
 
     if relatorio_compras is not None:
         conexao = sqlite3.connect('meu_banco.db') # Abre a Conexão 
-        relatorio_compras.to_sql("compras", conexao, if_exists="replace", index=False)
+        relatorio_compras.to_sql("compras", conexao, if_exists="replace", index=True)
         conexao.close() # Fecha a Conexão
 
 def db_relatorio_estoque(uploaded_file):
@@ -16,7 +16,7 @@ def db_relatorio_estoque(uploaded_file):
 
     if relatorio_estoque is not None:
         conexao = sqlite3.connect('meu_banco.db') # Abre a Conexão
-        relatorio_estoque.to_sql("estoque", conexao, if_exists="replace", index=False)
+        relatorio_estoque.to_sql("estoque", conexao, if_exists="replace", index=True)
         conexao.close() # Fecha a Conexão
 
 def db_relatorio_ns(uploaded_file):
@@ -24,7 +24,7 @@ def db_relatorio_ns(uploaded_file):
 
     if relatorio_ns is not None:
         conexao = sqlite3.connect('meu_banco.db') # Abre a Conexão
-        relatorio_ns.to_sql("ns", conexao, if_exists="replace", index=False)
+        relatorio_ns.to_sql("ns", conexao, if_exists="replace", index=True)
         conexao.close() # Fecha a Conexão
 
 def db_relatorio_hot(uploaded_file):
@@ -32,7 +32,7 @@ def db_relatorio_hot(uploaded_file):
 
     if relatorio_hot is not None:
         conexao = sqlite3.connect('meu_banco.db') # Abre a Conexão
-        relatorio_hot.to_sql("hot", conexao, if_exists="replace", index=False)
+        relatorio_hot.to_sql("hot", conexao, if_exists="replace", index=True)
         conexao.close() # Fecha a Conexão
 
 def db_relatorio_lucas(uploaded_file):
@@ -40,7 +40,7 @@ def db_relatorio_lucas(uploaded_file):
 
     if relatorio_lucas is not None:
         conexao = sqlite3.connect('meu_banco.db') # Abre a Conexão
-        relatorio_lucas.to_sql("lucas", conexao, if_exists="replace", index=False)
+        relatorio_lucas.to_sql("lucas", conexao, if_exists="replace", index=True)
         conexao.close() # Fecha a Conexão
 
 # Consulta do Banco de Dados
